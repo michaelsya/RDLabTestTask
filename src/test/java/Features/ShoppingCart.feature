@@ -1,6 +1,6 @@
 Feature: possibility to add and remove items from shopping cart
-
-  Background:
+   #to implement
+ Background:
     Given I am on products page
     And shopping cart is empty
 
@@ -30,12 +30,3 @@ Feature: possibility to add and remove items from shopping cart
 
 
 
-    When I select "Red Duck" in the "Latest" product list
-    And I set the quantity to 1
-    And I add the product to the cart
-    And I navigate to the cart
-    Then the product quantity should be 1
-    When I set the product quantity to 5
-    And hit "Update" button
-    Then the product quantity should be 5
-    And the price is calculated properly

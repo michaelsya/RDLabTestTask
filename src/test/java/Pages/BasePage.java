@@ -1,17 +1,24 @@
 package Pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public abstract class AbstractPage
-    {
-        WebDriver driver;
+import java.util.List;
 
-        protected abstract AbstractPage openPage();
-        protected final int WAIT_TIMEOUT_SECONDS = 10;
+public abstract class BasePage {
+    WebDriver driver;
+    Logger log = LogManager.getRootLogger();
 
-        AbstractPage(WebDriver driver)
-        {
-            this.driver = driver;
-        }
+    @FindBy(xpath = "//footer//li//a")
+    List<WebElement> footerLinks;
+
+    BasePage(WebDriver driver) {
+        this.driver = driver;
     }
+
+    protected abstract BasePage openPage();
+}
 

@@ -3,7 +3,6 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 
 import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 
@@ -12,14 +11,14 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 @CucumberOptions(
         snippets = CAMELCASE,
         features = {"src/test/java/Features/"},
-        tags = "@123",
-        glue = {"StepDefs"}
+        tags = {"@123"},
+        glue = {"StepDefs"},
+        plugin = {"pretty"}
 )
-public class CucumberRunner {
-    private static WebDriver driver;
+public class CucumberRunnerTest {
 
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown() {
         DriverManager.closeDriver();
     }
 
