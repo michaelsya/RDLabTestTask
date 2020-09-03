@@ -3,8 +3,10 @@ package Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,4 +39,19 @@ public class WebElementUtils {
     public static String trimPageTitleToExcludeDefaultValue(String linkText) {
         return linkText.replace(" | Demokauppa", "");
     }
+
+    public static void selectButtonInDropdown(WebElement dropdown, String selectButtonName) {
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(selectButtonName);
+    }
+
+    public static List<String> getElementsTextAsList(List<WebElement> webElements) {
+        List<String> elementsTextList = new LinkedList<>();
+        webElements.forEach(element -> {
+            elementsTextList.add(element.getText());
+        });
+        return elementsTextList;
+    }
+
+
 }

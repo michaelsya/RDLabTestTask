@@ -1,0 +1,44 @@
+package enums;
+
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+@Getter
+public enum EssentialElementLocalisations {
+    CHANGE_REGIONAL_SETTINGS_BUTTON("Change", "Vaihda", "Ändra"),
+    SELECTED_LANGUAGE("English", "Suomi", "Svenska"),
+    CATEGORIES("Categories", "Kategoriat", "Kategorier"),
+    SIGN_IN("Sign In", "Kirjaudu sisään", "Logga in"),
+    SHOPPING_CART("Shopping Cart", "Ostoskori", "Varukorg");
+
+    public String english;
+    public String finnish;
+    public String swedish;
+
+    EssentialElementLocalisations(String english, String finnish, String swedish) {
+        this.english = english;
+        this.finnish = finnish;
+        this.swedish = swedish;
+    }
+
+    public static List<String> getElementsLocalisation(String desiredLanguage) {
+        Localisations localisations = Localisations.getLocalisationName(desiredLanguage);
+        List<String> localisedList = new ArrayList<>();
+        switch (localisations) {
+            case ENGLISH:
+                Stream.of(EssentialElementLocalisations.values()).forEach(item -> localisedList.add(item.getEnglish()));
+                break;
+            case FINNISH:
+                Stream.of(EssentialElementLocalisations.values()).forEach(item -> localisedList.add(item.getFinnish()));
+                break;
+            case SWEDISH:
+                Stream.of(EssentialElementLocalisations.values()).forEach(item -> localisedList.add(item.getSwedish()));
+                break;
+        }
+        return localisedList;
+    }
+
+}

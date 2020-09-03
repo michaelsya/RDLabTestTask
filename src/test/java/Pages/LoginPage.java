@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class LoginPage extends BasePage {
     private final String LOGIN_URL = "http://kuopassa.net/litecart/en/login";
@@ -23,6 +25,8 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='alert alert-success']")
     private WebElement successNotification;
+
+    private List<WebElement> essentialLinks;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -64,5 +68,13 @@ public class LoginPage extends BasePage {
         log.info("Getting following success notification: '" + successText + "'");
         return successText;
     }
+
+    public List<WebElement> fillEssentialLinks(){
+        essentialLinks.add(signInButton);
+        essentialLinks.add(passwordField);
+        return essentialLinks;
+
+    }
+
 
 }

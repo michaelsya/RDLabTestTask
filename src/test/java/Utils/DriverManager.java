@@ -32,11 +32,12 @@ public class DriverManager {
                 case "chrome": {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
+                    break;
                 }
                 default:
-                    throw new DriverNotFoundException(String.format("No browser " +
+                    throw new DriverNotFoundException("No browser " +
                             "specified or the browser is not supported. Supported browser arguments: " +
-                            "\n firefox \n chrome"));
+                            "\n firefox \n chrome");
             }
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
