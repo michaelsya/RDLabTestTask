@@ -23,7 +23,7 @@ public class DriverManager {
 
     public static WebDriver getDriver() {
         if (null == driver) {
-            switch (System.getProperty("browser").toLowerCase()) {
+            switch (selectBrowser().toLowerCase()) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
@@ -44,6 +44,12 @@ public class DriverManager {
 
         }
         return driver;
+    }
+
+    private static String selectBrowser(){
+        if (System.getProperty("browser") != null)
+            return System.getProperty("browser");
+        else return "chrome";
     }
 
     public static void closeDriver() {
