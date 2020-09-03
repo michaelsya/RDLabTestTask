@@ -1,6 +1,7 @@
 package Pages;
 
 import PageComponents.Header;
+import PageComponents.RegionalSettings;
 import Utils.WebElementUtils;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class HomePage extends BasePage {
     public List<WebElement> essentialElements;
     @Getter
     Header header;
+    RegionalSettings regionalSettings;
     @FindBy(css = "div#box-category-tree > .title")
     private WebElement categoryTitle;
     @FindBy(css = "div#box-account-login > h2")
@@ -25,7 +27,8 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        this.header = new Header();
+        this.header = new Header(driver);
+        this.regionalSettings = new RegionalSettings(driver);
         PageFactory.initElements(this.driver, this);
     }
 
@@ -54,6 +57,8 @@ public class HomePage extends BasePage {
     public List<String> getEssentialElementsTextAsList(){
         return WebElementUtils.getElementsTextAsList(getEssentialWebElementsList());
     }
+
+
 
 
 }

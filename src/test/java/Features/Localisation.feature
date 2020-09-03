@@ -1,6 +1,6 @@
 Feature: Change User Interface Language
 
-  @123
+  @Smoke
   Scenario Outline: essential web element names are changed according to the language choice I make
     Given I am on home page
     When I change the "Language" to "<language_name>"

@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 
 @Getter
 public enum EssentialElementLocalisations {
-    CHANGE_REGIONAL_SETTINGS_BUTTON("Change", "Vaihda", "Ändra"),
     SELECTED_LANGUAGE("English", "Suomi", "Svenska"),
+    CHANGE_REGIONAL_SETTINGS_BUTTON("Change", "Vaihda", "Ändra"),
+    SHOPPING_CART("Shopping Cart", "Ostoskori", "Varukorg"),
     CATEGORIES("Categories", "Kategoriat", "Kategorier"),
-    SIGN_IN("Sign In", "Kirjaudu sisään", "Logga in"),
-    SHOPPING_CART("Shopping Cart", "Ostoskori", "Varukorg");
+    SIGN_IN("Sign In", "Kirjaudu sisään", "Logga in");
 
     public String english;
     public String finnish;
