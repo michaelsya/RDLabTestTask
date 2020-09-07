@@ -10,11 +10,5 @@ public class BaseStepDefs {
     WebDriver driver = DriverManager.getDriver();
     LoginPage loginPage;
     HomePage homePage;
-    SoftAssertions softly = new SoftAssertions();
-
-    public void softlyAssertAll() {
-        softly.assertAll();
-    }
-
 
 }

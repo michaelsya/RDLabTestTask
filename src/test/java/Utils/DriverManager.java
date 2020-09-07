@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
@@ -23,7 +24,7 @@ public class DriverManager {
 
     public static WebDriver getDriver() {
         if (null == driver) {
-            switch (selectBrowser().toLowerCase()) {
+            switch (Optional.ofNullable(System.getProperty("browser")).orElse("chrome")) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
@@ -40,16 +41,10 @@ public class DriverManager {
                             "\n firefox \n chrome");
             }
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         }
         return driver;
-    }
-
-    private static String selectBrowser(){
-        if (System.getProperty("browser") != null)
-            return System.getProperty("browser");
-        else return "chrome";
     }
 
     public static void closeDriver() {

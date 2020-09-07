@@ -1,11 +1,13 @@
 package enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+@AllArgsConstructor
 @Getter
 public enum EssentialElementLocalisations {
     SELECTED_LANGUAGE("English", "Suomi", "Svenska"),
@@ -17,12 +19,6 @@ public enum EssentialElementLocalisations {
     public String english;
     public String finnish;
     public String swedish;
-
-    EssentialElementLocalisations(String english, String finnish, String swedish) {
-        this.english = english;
-        this.finnish = finnish;
-        this.swedish = swedish;
-    }
 
     public static List<String> getElementsLocalisation(String desiredLanguage) {
         Localisations localisations = Localisations.getLocalisationName(desiredLanguage);

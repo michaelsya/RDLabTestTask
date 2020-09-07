@@ -4,9 +4,7 @@ import Pages.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.util.Map;
-import java.util.stream.Stream;
+import org.assertj.core.api.SoftAssertions;
 
 public class FooterStepDefs extends BaseStepDefs {
     @Given("I am on home page")
@@ -22,13 +20,12 @@ public class FooterStepDefs extends BaseStepDefs {
 
     @Then("corresponding pages open")
     public void correspondingPagesOpen() {
-        Stream<Map.Entry<String, String>> stream = homePage.getFooterLinksTextAndPageTitlesTheyOpen().entrySet().stream();
-        stream.forEach(stringStringEntry -> {
-            //values represent the actual page titles and keys represent link texts (which should be expected results)
-            softly.assertThat(stringStringEntry.getValue()).as("Page title is '" + stringStringEntry.getValue()
-                    + "' But link text that launched this page is: '" + stringStringEntry.getKey()
-                    + "'\n").isEqualTo(stringStringEntry.getKey());
-        });
-        softlyAssertAll();
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        homePage.getFooterLinksTextAndPageTitlesTheyOpen().forEach((key, value) -> softAssertions.assertThat(value)
+                .as("Page title is '" + value
+                        + "' But link text that launched this page is: '" + key
+                        + "'\n")
+                .isEqualTo(key));
     }
 }

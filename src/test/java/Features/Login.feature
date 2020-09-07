@@ -1,5 +1,5 @@
 Feature: Login and logout abilities
-
+  @Smoke
   Scenario: I can log in using existing valid account credentials
     Given I am on a login page
     When I enter "3360333@gmail.com" in the email address field

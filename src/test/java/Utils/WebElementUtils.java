@@ -1,5 +1,6 @@
 package Utils;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class WebElementUtils {
 
@@ -46,11 +48,12 @@ public class WebElementUtils {
     }
 
     public static List<String> getElementsTextAsList(List<WebElement> webElements) {
-        List<String> elementsTextList = new LinkedList<>();
-        webElements.forEach(element -> {
-            elementsTextList.add(element.getText());
-        });
-        return elementsTextList;
+        return webElements.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    @Test
+    public void print(){
+        System.out.println(System.getProperty("browser").toLowerCase());
     }
 
 
