@@ -8,7 +8,7 @@ Allure integrated with Cucumber as a reporting solution;<br>
 Log4j as a logger;<br>
 Maven as a build tool.
 
-To run tests, please run the following command (do not forget to specify the browser):
+To run tests, please run the following command:
 
 <code> mvn -Dbrowser=<b><i>BROWSER_NAME</i></b> clean test </code>
 
